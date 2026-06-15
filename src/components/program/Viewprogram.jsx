@@ -2,18 +2,19 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { IoMdAdd } from 'react-icons/io';
 import { Link } from 'react-router';
+const apiUrl = import.meta.env.VITE_AdminUrl;
 export default function Viewprogram() {
-  
+
 
     let [programs, setprogram] = useState([])
 
     let getProgram = () => {
-        axios.get('http://localhost:1000/admin-dashboard/get-program')
+        axios.get(`${apiUrl}/get-program`)
             .then((res) => res.data)
             .then((finalRes) => {
                 console.log(finalRes);
                 setprogram(finalRes.data)
-                 
+
             })
     }
 
@@ -29,7 +30,7 @@ export default function Viewprogram() {
         let Isdelete = confirm("Are you sure to delete...")
 
         if (Isdelete) {
-            axios.delete(`http://localhost:1000/admin-dashboard/delete-program/${delId}`)
+            axios.delete(`${apiUrl}/delete-program/${delId}`)
                 .then((res) => res.data)
                 .then((finalRes) => {
                     console.log(finalRes);
@@ -88,7 +89,7 @@ export default function Viewprogram() {
                                         <span className="text-sm text-slate-600"> ₹ {program.price}  price available</span>
                                         <div className="flex flex-wrap gap-2">
                                             <button className="inline-flex items-center rounded-2xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-indigo-300 hover:bg-indigo-50">
-                                                 <Link to={`/edit-program/${program._id}`} state={program}> Edit</Link>
+                                                <Link to={`/edit-program/${program._id}`} state={program}> Edit</Link>
                                             </button>
                                             <button onClick={getId} value={program._id} className="inline-flex items-center rounded-2xl border border-slate-200  bg-white px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-indigo-300 hover:bg-indigo-50">
                                                 Delete

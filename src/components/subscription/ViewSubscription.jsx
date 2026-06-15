@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 
 export default function SubscriptionDashboard() {
+     const apiUrl = import.meta.env.VITE_AdminUrl;
     let token = localStorage.getItem('token')
     let [member, setmeber] = useState([])
 
@@ -17,7 +18,7 @@ export default function SubscriptionDashboard() {
 
     let getdata = () => {
         axios.get(
-            "http://localhost:1000/admin-dashboard/get-Allmember"
+            `${apiUrl}/get-Allmember`
         ).then((res) => res.data)
             .then((finalRes) => {
                 // console.log(finalRes, 'dashboard ka hai');
@@ -41,7 +42,7 @@ export default function SubscriptionDashboard() {
         let Ischeck = confirm('Are you sure to delete..')
         if (Ischeck) {
             axios.delete(
-                `http://localhost:1000/admin-dashboard/delete-member/${Id}`,
+                `${apiUrl}/delete-member/${Id}`,
             ).then((res) => res.data)
                 .then((finalRes) => {
                     console.log(finalRes);

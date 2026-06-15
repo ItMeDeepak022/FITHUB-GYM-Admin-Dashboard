@@ -3,13 +3,13 @@ import React, { useEffect, useState } from 'react'
 import { IoMdDownload } from 'react-icons/io'
 
 export default function UsersDashboard() {
-
+    const apiUrl = import.meta.env.VITE_AdminUrl;
     let [query, setquery] = useState([])
 
 
     let getData = (e) => {
         axios.get(
-            'http://localhost:1000/admin-dashboard/get-query')
+            `${apiUrl}/get-query`)
             .then((res) => res.data)
             .then((finalRes) => {
                 console.log(finalRes);
@@ -30,7 +30,7 @@ export default function UsersDashboard() {
 
         if (isConfirm) {
             axios.delete(
-                `http://localhost:1000/admin-dashboard/delete-query/${Id}`)
+                `${apiUrl}/delete-query/${Id}`)
                 .then((res) => res.data)
                 .then((finalRes) => {
                     getData()
@@ -64,12 +64,12 @@ export default function UsersDashboard() {
             });
     };
 
-     
+
 
     return (
         <div className="min-h-screen bg-slate-100 sm:p-6">
 
-            
+
             <div className="max-w-7xl mx-auto">
 
                 {/* Header */}
