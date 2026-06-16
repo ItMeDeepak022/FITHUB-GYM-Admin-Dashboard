@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router'
 
 export default function AddProgram() {
-
+const apiUrl = import.meta.env.VITE_AdminUrl;
     // UPDATE PROGRAM
 
     let navigate = useNavigate()
@@ -38,7 +38,7 @@ export default function AddProgram() {
 
 
         axios.put(
-            `http://localhost:1000/admin-dashboard/update-program/${id}`,
+            `${apiUrl}/update-program/${id}`,
             formData
         )
             .then((res) => res.data)
@@ -85,7 +85,7 @@ export default function AddProgram() {
         let formData = new FormData(e.target)
 
         axios.post(
-            'http://localhost:1000/admin-dashboard/add-program',
+            `${apiUrl}/add-program`,
             formData
         )
             .then((res) => res.data)

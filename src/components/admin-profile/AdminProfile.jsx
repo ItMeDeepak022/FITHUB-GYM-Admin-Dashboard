@@ -99,7 +99,7 @@ export default function AdminProfile() {
         formValue.append('phone', phone)
         formValue.append('aboutAdmin', aboutAdmin)
         if (e.target.profileImg.files[0]) {
-            formData.append(
+            formValue.append(
                 "profileImg",
                 e.target.profileImg.files[0]
             );

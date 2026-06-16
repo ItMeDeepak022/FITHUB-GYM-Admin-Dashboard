@@ -2,10 +2,10 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { IoMdAdd } from 'react-icons/io';
 import { Link } from 'react-router';
-const apiUrl = import.meta.env.VITE_AdminUrl;
+
 export default function Viewprogram() {
 
-
+const apiUrl = import.meta.env.VITE_AdminUrl;
     let [programs, setprogram] = useState([])
 
     let getProgram = () => {
