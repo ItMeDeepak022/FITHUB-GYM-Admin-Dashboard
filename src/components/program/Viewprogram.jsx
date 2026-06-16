@@ -80,7 +80,7 @@ const apiUrl = import.meta.env.VITE_AdminUrl;
 
                                         <div className="rounded-2xl bg-slate-50 flex justify-center flex-col items-center ">
                                             <p className="text-xs uppercase tracking-wide text-slate-500">Duration</p>
-                                            <p className="mt-1 text-lg font-medium text-slate-900">{program.duration}</p>
+                                            <p className="mt-1 text-lg font-medium text-slate-900">{program.duration} Months</p>
                                         </div>
 
                                     </div>

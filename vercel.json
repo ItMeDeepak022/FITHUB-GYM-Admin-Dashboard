@@ -1,14 +1,8 @@
 {
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
-  ],
-  "redirects": [
-    {
-      "source": "/gym-website",
-      "destination": "https://fithubgymapplication.vercel.app/",
-      "permanent": false
-    }
   ]
+    
 }
 
  

@@ -178,7 +178,7 @@ const apiUrl = import.meta.env.VITE_AdminUrl;
                         </label>
 
                         <input
-                            type="text"
+                            type="Number"
                             name="duration"
                             required
                             value={updateform.duration}
