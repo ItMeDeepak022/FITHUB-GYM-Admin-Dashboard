@@ -6,7 +6,7 @@ export default function UsersDashboard() {
     const apiUrl = import.meta.env.VITE_AdminUrl;
     let [query, setquery] = useState([])
 
-
+    
     let getData = (e) => {
         axios.get(
             `${apiUrl}/get-query`)
@@ -18,8 +18,10 @@ export default function UsersDashboard() {
             })
     }
 
+     
     useEffect(() => {
         getData()
+        getPDF()
     }, [])
 
 
@@ -41,7 +43,7 @@ export default function UsersDashboard() {
 
     const getAllPdf = () => {
         axios.get(
-            "http://localhost:1000/admin-dashboard/download-pdf",
+            `${apiUrl}/download-pdf`,
             {
                 responseType: "blob",
             }
