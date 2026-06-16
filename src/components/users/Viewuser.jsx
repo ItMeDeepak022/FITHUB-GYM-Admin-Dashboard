@@ -21,7 +21,7 @@ export default function UsersDashboard() {
      
     useEffect(() => {
         getData()
-        getPDF()
+        
     }, [])
 
 
@@ -40,32 +40,7 @@ export default function UsersDashboard() {
         }
 
     }
-
-    const getAllPdf = () => {
-        axios.get(
-            `${apiUrl}/download-pdf`,
-            {
-                responseType: "blob",
-            }
-        )
-            .then((res) => {
-                const url = window.URL.createObjectURL(res.data);
-
-                const a = document.createElement("a");
-                a.href = url;
-                a.download = "query-report.pdf";
-
-                document.body.appendChild(a);
-                a.click();
-
-                document.body.removeChild(a);
-                window.URL.revokeObjectURL(url);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    };
-
+ 
 
 
     return (
@@ -110,10 +85,7 @@ export default function UsersDashboard() {
                         <div className='flex  sm:gap-10 sm:p-4   sm:justify-around  items-center justify-between w-full '>
                             <div className='text-white text-[18px] '>Total Query <span className='text-[red] font-bold ml-1 inline-block'>{query.length > 9 ? `${query.length}` : `0${query.length}`} </span> </div>
 
-                            <button onClick={getAllPdf} disabled={query.length > 0 ? false : true} className='text-[18px] bg-red-700 cursor-pointer hover:bg-red-800 py-2 px-2 rounded-[10px] text-white flex items-center gap-2'>
-                                Download
-                                <IoMdDownload className='text-[20px] mt-0' />
-                            </button>
+                             
                         </div>
                     </div>
 
