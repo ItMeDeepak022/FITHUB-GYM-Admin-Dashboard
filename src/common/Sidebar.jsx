@@ -12,8 +12,9 @@ export default function Sidebar() {
         { title: 'Location', submenu: [ 'View'] },
         { title: 'FAQ', submenu: ['View'] },
         { title: 'Testimonial', submenu: ['View'] },
-        { title: 'User', submenu: ['View'] },
+        { title: 'User-Query', submenu: ['View'] },
         { title: 'Subscription', submenu: ['View'] },
+        { title: 'Register-Users', submenu: ['View'] },
 
     ]
 
@@ -80,9 +81,9 @@ export default function Sidebar() {
                 </ul>
             </nav>
 
-            <div className='absolute bottom-0 pl-5 bg-gray-200 w-full py-3'>
+            {/* <div className='absolute bottom-0 pl-5 bg-gray-200 w-full py-3'>
                 <FiLogOut onClick={logOutNow} className='text-[30px] cursor-pointer font-bold hover:text-[red] transition-all duration-300' />
-            </div>
+            </div> */}
         </aside>
     )
 }

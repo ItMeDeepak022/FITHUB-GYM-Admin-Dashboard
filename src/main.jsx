@@ -22,6 +22,7 @@ import ViewTestimonials from './components/testimonials/Viewtestimonial'
 import UsersDashboard from './components/users/Viewuser'
 import SubscriptionDashboard from './components/subscription/ViewSubscription'
 import AdminProfile from './components/admin-profile/AdminProfile'
+import Register_Users from './components/register-users/Register_Users'
 
 
 createRoot(document.getElementById('root')).render(
@@ -31,7 +32,7 @@ createRoot(document.getElementById('root')).render(
       <Route path='/' element={<Loginhere />} />
 
       <Route element={<ProtectedRoute> <RootLayout /> </ProtectedRoute>} >
-      {/* <Route element={<RootLayout />} > */}
+        {/* <Route element={<RootLayout />} > */}
 
         <Route path='/dashboard' element={<Dashboard />} />
 
@@ -78,10 +79,13 @@ createRoot(document.getElementById('root')).render(
 
 
         {/* Users Sections */}
-        <Route path='view-user' element={<UsersDashboard />} />
+        <Route path='view-user-query' element={<UsersDashboard />} />
 
-        /* Subscription  Sections */
+        {/* /* Subscription  Sections */ }
         <Route path='view-subscription' element={<SubscriptionDashboard />} />
+
+        {/* Register Users Sections */}
+        <Route path='view-register-users' element={<Register_Users/>} />
 
       </Route>
 

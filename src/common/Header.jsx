@@ -17,6 +17,7 @@ export default function Header() {
     { title: 'Testimonial', submenu: ['View'] },
     { title: 'User', submenu: ['View'] },
     { title: 'Subscription', submenu: ['View'] },
+    { title: 'Register-Users', submenu: ['View'] },
 
   ]
 
@@ -98,7 +99,7 @@ export default function Header() {
           <div onClick={showProfile} className="flex items-center gap-3 group cursor-pointer ">
 
             <div className="text-right flex flex-col">
-              
+
               <p className="text-sm font-bold text-gray-700">
 
                 GYM Admin 💪
