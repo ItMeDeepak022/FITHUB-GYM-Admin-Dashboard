@@ -265,7 +265,7 @@ export default function SubscriptionDashboard() {
                                                         </p>
 
                                                         <h4 className="font-semibold text-slate-900 mt-1">
-                                                            {duration}
+                                                            {duration} Months
                                                         </h4>
 
                                                     </div>
