@@ -15,7 +15,7 @@ export default function Header() {
     { title: 'Location', submenu: ['View'] },
     { title: 'FAQ', submenu: ['View'] },
     { title: 'Testimonial', submenu: ['View'] },
-    { title: 'User', submenu: ['View'] },
+    { title: 'User-Query', submenu: ['View'] },
     { title: 'Subscription', submenu: ['View'] },
     { title: 'Register-Users', submenu: ['View'] },
 
