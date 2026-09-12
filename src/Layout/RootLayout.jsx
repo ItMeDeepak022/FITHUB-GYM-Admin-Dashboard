@@ -1,72 +1,35 @@
-// import React from 'react'
-// import Header from '../common/Header'
-// import Sidebar from '../common/Sidebar'
-// import Footer from '../common/Footer'
-// import { Outlet } from 'react-router'
-
-// export default function RootLayout() {
-//     return (
-//         <div className='max-w-full h-screen grid sm:grid-cols-[15%_auto] grid-cols-1 '>
-
-//             <div className='fixed top-0 left-0 h-screen w-[15%] bg-black text-white'>
-//                 <Sidebar />
-//             </div>
-
-//             {/* Main Section */}
-//             <div className='relative'>
-
-//                 {/* Fixed Header */}
-//                 <div className='fixed top-0 right-0 sm:w-[85%] w-full z-50'>
-//                     <Header />
-//                 </div>
-
-//                 {/* Main Content */}
-//                 <div className='pt-15 pb-20'>
-//                     <Outlet />
-//                 </div>
-
-//                 {/* Fixed Footer */}
-//                 <div className='fixed bottom-0 right-0 sm:w-[85%] w-full'>
-//                     <Footer />
-//                 </div>
-
-//             </div>
-
-
-//         </div>
-//     )
-// }
-
-import React from 'react'
+ import React, { useState } from 'react'
 import Header from '../common/Header'
 import Sidebar from '../common/Sidebar'
 import Footer from '../common/Footer'
 import { Outlet } from 'react-router'
 
 export default function RootLayout() {
-    return (
-        <div className='max-w-full min-h-screen'>
+    const [collapsed, setCollapsed] = useState(false);
 
-            {/* Fixed Sidebar */}
-            <div className='fixed top-0 left-0 w-[15%] h-screen sm:block hidden'>
-                <Sidebar />
+    return (
+        <div className='min-h-screen sm:bg-[#f8fafc] text-gray-800 flex flex-col'>
+
+            {/* Desktop Fixed Sidebar */}
+            <div className={`fixed top-0 left-0 h-screen z-40 sm:block hidden transition-all duration-300 ease-in-out ${collapsed ? "w-[72px]" : "w-64"}`}>
+                <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
             </div>
 
-            {/* Main Section */}
-            <div className='sm:ml-[15%]'>
+            {/* Main Content Area */}
+            <div className={`flex flex-col min-h-screen transition-all duration-300 ease-in-out ${collapsed ? "sm:ml-[72px]" : "sm:ml-64"}`}>
 
                 {/* Fixed Header */}
-                <div className='fixed top-0 z-50 right-0 sm:w-[85%] w-full'>
+                <div className={`fixed top-0 z-30 right-0 transition-all duration-300 ease-in-out w-full ${collapsed ? "sm:w-[calc(100%-72px)]" : "sm:w-[calc(100%-16rem)]"}`}>
                     <Header />
                 </div>
 
-                {/* Main Content */}
-                <div className='p-[50px_0px]'>
+                {/* Main Content Outlet */}
+                <main className='flex-1 pt-20 pb-20 px-4 sm:px-8'>
                     <Outlet />
-                </div>
+                </main>
 
                 {/* Fixed Footer */}
-                <div className='fixed bottom-0 right-0 sm:w-[85%] w-full bg-white/20 backdrop-blur-md'>
+                <div className={`fixed bottom-0 right-0 z-20 transition-all duration-300 ease-in-out w-full ${collapsed ? "sm:w-[calc(100%-72px)]" : "sm:w-[calc(100%-16rem)]"} bg-white/70 backdrop-blur-md border-t border-gray-200`}>
                     <Footer />
                 </div>
 

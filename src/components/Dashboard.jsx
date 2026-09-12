@@ -93,17 +93,9 @@ export default function Dashboard() {
 
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
+    <div className="min-h-screen  p-6">
       <div className="max-w-7xl mx-auto">
-        <header className="mb-8">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            <div>
-              <h1 className="sm:text-3xl text-[24px] font-bold sm:font-semibold text-gray-900">Gym Admin Dashboard</h1>
-              <p className="mt-2 text-gray-600">Monitor classes, members, performance and schedule.</p>
-            </div>
-
-          </div>
-        </header>
+         
 
         <section className="grid gap-6 lg:grid-cols-4 sm:grid-cols-1 mb-8">
           <div className="rounded-2xl bg-white p-5 shadow-sm border border-gray-200">

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { FiChevronDown, FiChevronUp, FiMenu } from 'react-icons/fi'
 import { Link, useNavigate } from 'react-router'
 import { IoMdClose, IoMdLogOut, IoMdSettings } from "react-icons/io";
-export default function Header() {
+export default function Header({ collapsed, setCollapsed }) {
   const apiUrl = import.meta.env.VITE_AdminUrl;
 
   const [openIndex, setOpenIndex] = useState(null)
@@ -18,7 +18,6 @@ export default function Header() {
     { title: 'User-Query', submenu: ['View'] },
     { title: 'Subscription', submenu: ['View'] },
     { title: 'Register-Users', submenu: ['View'] },
-
   ]
 
   const toggleOpen = (index) => {
@@ -67,67 +66,67 @@ export default function Header() {
       })
   }
 
-  {
-    token && (
-      useEffect(() => {
-        getAdminProfile()
-      }, [token])
-    )
-  }
-  return (
+  useEffect(() => {
+    if (token) {
+      getAdminProfile()
+    }
+  }, [token])
 
+  return (
     <>
       <div className="relative">
 
         {/* Header */}
-        <header className="z-[999] flex items-center justify-between sm:px-8 px-5 py-2 bg-white/70 backdrop-blur-lg shadow-md border-b border-white/20">
+        <header className="z-[999] flex items-center justify-between sm:px-8 px-5 sm:py-5.5 py-3 bg-white/80 backdrop-blur-lg shadow-sm border-b border-gray-200/80">
 
           {/* Left */}
-          <button className="flex items-center gap-2 text-gray-700 hover:text-gray-900">
+          <div className="flex items-center gap-3">
+            {/* Mobile Menu Button */}
+            <button
+              type="button"
+              onClick={showHideMenu}
+              className="sm:hidden text-gray-700 hover:text-gray-900 cursor-pointer p-1"
+              aria-label="Toggle mobile menu"
+            >
+              {showMenu ? <FiMenu className="text-3xl" /> : <IoMdClose className="text-3xl" />}
+            </button>
 
-            {
-              showMenu ? <FiMenu className="text-3xl sm:hidden" onClick={showHideMenu} /> : <IoMdClose onClick={showHideMenu} className="sm:hidden text-4xl" />
-            }
+           
 
-            <span className="text-[20px] font-semibold sm:block hidden">
+            <span className="text-[20px] font-semibold text-gray-800">
               Dashboard
             </span>
-
-          </button>
+          </div>
 
           {/* Right */}
-          <div onClick={showProfile} className="flex items-center gap-3 group cursor-pointer ">
+          <div onClick={showProfile} className="flex items-center gap-3 group cursor-pointer relative">
 
             <div className="text-right flex flex-col">
-
               <p className="text-sm font-bold text-gray-700">
-
                 GYM Admin 💪
               </p>
-              <p className='sm:block hidden text-[green] font-normal'>{name}</p>
-
+              <p className='sm:block hidden text-emerald-600 text-xs font-semibold'>{name}</p>
             </div>
 
             <img
-              src={profileImg}
+              src={profileImg || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=60"}
               alt='Admin-Profile'
-              className="h-12 w-12 rounded-full object-cover border-2 border-white shadow-md"
+              className="h-10 w-10 rounded-full object-cover border-2 border-white shadow-sm"
             />
 
-            <div className={` ${show ? 'hidden' : 'block'}  transition-all duration-500 absolute sm:right-2 right-0 sm:top-15 top-[65px] sm:w-45 w-40 h-35 bg-white border-1 border-gray-200 sm:hidden shadow-lg rounded-b-[10px]  sm:group-hover:block`}>
-              <ul className='flex flex-col gap-4 m-[10%]'>
-                <li className='bg-gray-200 hover:bg-gray-300 transition-all duration-200 py-2 shadow-md  rounded-[10px] pl-3'><Link to={'/admin-profile'}>Profile</Link> </li>
-
-                <li onClick={logOutNow} className='flex items-center gap-4 bg-gray-200 hover:bg-gray-300 transition-all duration-200 py-2 shadow-md  rounded-[10px] pl-3'>
-                  <p >Logout</p>
-                  <IoMdLogOut className='font-bold text-[23px]  text-[red] ' />
+            <div className={` ${show ? 'hidden' : 'block'} transition-all duration-300 absolute sm:right-0 right-0 sm:top-14 top-[55px] sm:w-44 w-40 bg-white border border-gray-200 sm:hidden shadow-xl rounded-xl sm:group-hover:block z-50`}>
+              <ul className='flex flex-col gap-2 p-2'>
+                <li className='bg-gray-50 hover:bg-gray-100 transition-all duration-200 py-2 rounded-lg px-3'>
+                  <Link to={'/admin-profile'} className="block w-full text-sm font-medium text-gray-700">Profile</Link>
                 </li>
 
+                <li onClick={logOutNow} className='flex items-center justify-between bg-gray-50 hover:bg-red-50 text-gray-700 hover:text-red-600 transition-all duration-200 py-2 rounded-lg px-3 cursor-pointer'>
+                  <span className="text-sm font-medium">Logout</span>
+                  <IoMdLogOut className='text-lg text-red-500' />
+                </li>
               </ul>
             </div>
           </div>
-
-
 
         </header>
 
